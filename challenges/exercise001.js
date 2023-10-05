@@ -18,8 +18,8 @@ export function generateInitials(firstName, lastName) {
 	if (firstName === undefined) throw new Error('firstName is required');
 	if (lastName === undefined) throw new Error('lastName is required');
 	
-	let firstInitial = (firstName.length == 0) ? "" : firstName.charAt(0).toUpperCase();
-	let lastInitial = (lastName.length == 0) ? "" : lastName.charAt(0).toUpperCase();
+	const firstInitial = (firstName.length == 0) ? "" : firstName.charAt(0).toUpperCase();
+	const lastInitial = (lastName.length == 0) ? "" : lastName.charAt(0).toUpperCase();
 	
 	return firstInitial + "." + lastInitial;
 }
@@ -28,7 +28,8 @@ export function addVAT(originalPrice, vatRate) {
 	if (originalPrice === undefined)
 		throw new Error('originalPrice is requied');
 	if (vatRate === undefined) throw new Error('vatRate is required');
-	// Add your code here!
+
+	return originalPrice + (Math.round ((originalPrice * (vatRate/100)) * 100)/100);
 }
 
 export function getSalePrice(originalPrice, reduction) {

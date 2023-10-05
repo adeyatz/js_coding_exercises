@@ -21,6 +21,11 @@ describe("capitalize", () => {
   test("does nothing if the string is already capitalized", () => {
     expect(capitalize("Hello")).toBe("Hello");
   });
+
+  test("returns capitalised string from all upper case", () => {
+    expect(capitalize("HELLO WORLD")).toBe("Hello world");
+  });
+
 });
 
 describe("generateInitials", () => {
