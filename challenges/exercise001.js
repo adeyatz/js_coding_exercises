@@ -90,7 +90,16 @@ export function getMeanScore(scores) {
 	return Math.round ((sum/scores.length) * 100)/100;
 }
 
-export function simpleFizzBuzz(n) {
-	if (n === undefined) throw new Error('n is required');
-	// Add your code here!
+export function simpleFizzBuzz(inputValue) {
+	if (inputValue === undefined) throw new Error('n is required');
+	
+	if (inputValue % 3 === 0 && inputValue % 5 === 0)
+		return "fizzbuzz";
+	else if (inputValue % 3 === 0)
+		return 'fizz';
+	else if (inputValue % 5 === 0)
+		return 'buzz';
+	else
+		return inputValue;
+	
 }
