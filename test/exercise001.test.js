@@ -68,6 +68,10 @@ describe("getSalePrice", () => {
   test("reduces a price of 50 by 0%", () => {
     expect(getSalePrice(50, 0)).toBe(50);
   });
+
+  test("reduces a price of 50 by 100%", () => {
+      expect(getSalePrice(50, 100)).toBe(0);
+  });
 });
 
 describe("getMiddleCharacter", () => {
