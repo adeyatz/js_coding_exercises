@@ -16,10 +16,12 @@ export function getTotalSubjects(people) {
 	return people.reduce ((previousTotal, person) => previousTotal + person.subjects.length,0);
 }
 
-export function checkIngredients(menu, ingredient) {
+export function checkIngredients(menu, ingredientToFind) {
 	if (menu === undefined) throw new Error('menu is required');
-	if (!ingredient) throw new Error('ingredient is required');
-	// Your code here!
+	if (!ingredientToFind) throw new Error('ingredient is required');
+	
+	return menu.filter(meal => meal.ingredients
+					.filter (mealIngredient => mealIngredient === ingredientToFind).length > 0).length > 0;
 }
 
 export function duplicateNumbers(arr1, arr2) {
