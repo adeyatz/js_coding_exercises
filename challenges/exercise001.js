@@ -58,12 +58,21 @@ export function getMiddleCharacter(str) {
 
 export function reverseWord(word) {
 	if (word === undefined) throw new Error('word is required');
-	// Add your code here!
+
+	if (word.length === 0) throw new Error ('word length is zero');
+	
+	const splitString = word.split("");
+
+	const reverseArray = splitString.reverse();
+
+	return reverseArray.join("");
 }
 
 export function reverseAllWords(words) {
 	if (words === undefined) throw new Error('words is required');
-	// Add your code here!
+	if (words.length === 0) throw new Error ('words are not there');
+
+	return words.forEach (word =>  reverseWord(word));
 }
 
 export function countLinuxUsers(users) {
