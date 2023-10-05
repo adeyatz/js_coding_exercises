@@ -27,5 +27,10 @@ export function checkIngredients(menu, ingredientToFind) {
 export function duplicateNumbers(arr1, arr2) {
 	if (arr1 === undefined) throw new Error('arr1 is required');
 	if (arr2 === undefined) throw new Error('arr2 is required');
-	// Your code here!
+	
+	const sortedArrayWithduplicates =  arr1.filter (num1 => arr2
+											.filter (num2 => num1 === num2 ).length > 0)
+											.sort ((a,b) => a-b);
+
+	return sortedArrayWithduplicates.filter ((item, index) => sortedArrayWithduplicates.indexOf(item) === index);
 }
