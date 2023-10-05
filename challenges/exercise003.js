@@ -1,6 +1,7 @@
-export function getSquares(nums) {
-	if (nums === undefined) throw new Error('nums is required');
-	// Your code here!
+export function getSquares(numbers) {
+	if (numbers === undefined) throw new Error('nums is required');
+	
+	return numbers.map (number => number * number);
 }
 
 export function camelCaseWords(words) {
