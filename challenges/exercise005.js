@@ -20,7 +20,6 @@ export const count1sand0s = (str) => {
 			onesAndZeros[ch] += 1;
 		}
 	}
-	console.log (onesAndZeros);
 	return onesAndZeros;
 };
 
@@ -42,7 +41,37 @@ export const sumArrays = (arrs) => {
 
 export const arrShift = (arr) => {
 	if (arr === undefined) throw new Error('arr is required');
-	// Your code here!
+
+	// const result = [];
+
+	// for (let i = 0; i < arr.length; i++) {
+	// 	if (i  === 0 ) {
+	// 		result.push (arr[arr.length -1]);
+	// 	} else if (i == arr.length - 1) {
+	// 		result.push (arr[0]);
+	// 	} else {
+	// 		result.push (arr[i]);
+	// 	}
+	// }
+
+	if (arr.length > 0) {
+		const first = arr[0];
+		const last = arr[arr.length - 1];
+		arr[0] = last;
+		arr[arr.length - 1] = first;
+	}
+	return arr;
+
+	// return arr.map ((value, index) => {
+	// 	if (index == 0) {
+	// 		return (arr[arr.length - 1]);
+	// 	} else if (index == arr.length - 1) {
+	// 		return arr[0];
+	// 	}
+	// 		else {
+	// 			return value;
+	// 		}
+	// 	});
 };
 
 export const findNeedle = (haystack, searchTerm) => {
