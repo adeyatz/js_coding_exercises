@@ -12,6 +12,8 @@
  */
 export const sumMultiples = (arr) => {
 	if (arr === undefined) throw new Error('arr is required');
+
+	return arr.reduce ((runningTotal, number) => number % 5 === 0 || number % 3 === 0 ? runningTotal + number : runningTotal, 0);
 };
 
 /**
