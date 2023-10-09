@@ -328,6 +328,25 @@ describe("areWeCovered", () => {
     }).toThrow("Requires staff Array and weekday");
   });
 
+  test("Error is thrown for invalid dayOfWeek parameter", () => {
+    const staff = [
+      { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+      { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+    ];
+
+    expect(() => {
+      areWeCovered(staff, "Mnday");
+    }).toThrow("Requires staff Array and weekday");
+
+    expect(() => {
+      areWeCovered(staff, 0);
+    }).toThrow("Requires staff Array and weekday");
+
+    expect(() => {
+      areWeCovered(staff, false);
+    }).toThrow("Requires staff Array and weekday");
+  });
+
   // test("Value of 1 creates array of size 1x1", () => {
   //   const expectedNumber = [[0]];
   //   expect(createMatrix(1, 0)).toEqual(expectedNumber);

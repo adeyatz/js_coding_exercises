@@ -135,4 +135,5 @@ const STAFF_ERR_MSG = "Requires staff Array and weekday";
 
 export const areWeCovered = (staff, day) => {
   if (staff === undefined || day === undefined) throw new Error(STAFF_ERR_MSG);
+  if (!Array.isArray(staff)) throw new Error(STAFF_ERR_MSG);
 };
