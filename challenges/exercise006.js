@@ -33,6 +33,8 @@ export const isValidDNA = (str) => {
     throw new Error("String is required");
 
   if (str.length == 0) return false;
+
+  return str.match(/[acgt]/gi).length === str.length;
 };
 
 /**

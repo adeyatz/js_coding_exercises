@@ -70,4 +70,14 @@ describe("isValidDNA", () => {
   test("Empty string passed in returns false", () => {
     expect(isValidDNA("")).toBe(false);
   });
+
+  test("Empty valid DNA letter passed in returns true", () => {
+    expect(isValidDNA("C")).toBe(true);
+
+    expect(isValidDNA("G")).toBe(true);
+
+    expect(isValidDNA("T")).toBe(true);
+
+    expect(isValidDNA("A")).toBe(true);
+  });
 });
