@@ -3,6 +3,7 @@ import {
   sumMultiples,
   getComplementaryDNA,
   isItPrime,
+  createMatrix,
 } from "../challenges/exercise006";
 
 console.log(sumMultiples);
@@ -113,80 +114,111 @@ describe("isValidDNA", () => {
 
     expect(isValidDNA("T1")).toBe(false);
   });
+});
 
-  describe("getComplementaryDNA", () => {
-    test("Error is thrown for invalid input", () => {
-      expect(() => {
-        getComplementaryDNA();
-      }).toThrow("Valid DNA string is required");
+describe("getComplementaryDNA", () => {
+  test("Error is thrown for invalid input", () => {
+    expect(() => {
+      getComplementaryDNA();
+    }).toThrow("Valid DNA string is required");
 
-      expect(() => {
-        getComplementaryDNA("abc");
-      }).toThrow("Valid DNA string is required");
+    expect(() => {
+      getComplementaryDNA("abc");
+    }).toThrow("Valid DNA string is required");
 
-      expect(() => {
-        getComplementaryDNA(10);
-      }).toThrow("Valid DNA string is required");
-    });
-
-    test("Valid DNA string ACGT to give TGCA, upper and lower case", () => {
-      expect(getComplementaryDNA("ACGT")).toBe("TGCA");
-
-      expect(getComplementaryDNA("acgt")).toBe("TGCA");
-
-      expect(getComplementaryDNA("AcgT")).toBe("TGCA");
-    });
-
-    test("Valid DNA character gives valid complementary character", () => {
-      expect(getComplementaryDNA("A")).toBe("T");
-      expect(getComplementaryDNA("c")).toBe("G");
-      expect(getComplementaryDNA("G")).toBe("C");
-      expect(getComplementaryDNA("t")).toBe("A");
-    });
+    expect(() => {
+      getComplementaryDNA(10);
+    }).toThrow("Valid DNA string is required");
   });
 
-  describe("isItPrime", () => {
-    test("Error is thrown for invalid input", () => {
-      expect(() => {
-        isItPrime();
-      }).toThrow("Number greater than 1 required");
+  test("Valid DNA string ACGT to give TGCA, upper and lower case", () => {
+    expect(getComplementaryDNA("ACGT")).toBe("TGCA");
 
-      expect(() => {
-        isItPrime("abc");
-      }).toThrow("Number greater than 1 required");
+    expect(getComplementaryDNA("acgt")).toBe("TGCA");
 
-      expect(() => {
-        isItPrime(-10);
-      }).toThrow("Number greater than 1 required");
-
-      expect(() => {
-        isItPrime(1);
-      }).toThrow("Number greater than 1 required");
-    });
-
-    test("Test fractional number returns false", () => {
-      expect(isItPrime(2.5)).toBe(false);
-      expect(isItPrime(11.01)).toBe(false);
-      expect(isItPrime(7.9)).toBe(false);
-      expect(isItPrime(2.99)).toBe(false);
-    });
-
-    test("Test returns true for valid prime number", () => {
-      expect(isItPrime(2)).toBe(true);
-      expect(isItPrime(3)).toBe(true);
-      expect(isItPrime(5)).toBe(true);
-      expect(isItPrime(7)).toBe(true);
-      expect(isItPrime(13037)).toBe(true);
-      expect(isItPrime(81349)).toBe(true);
-      expect(isItPrime(1000003)).toBe(true);
-    });
-
-    test("Test returns false for invalid prime number", () => {
-      expect(isItPrime(4)).toBe(false);
-      expect(isItPrime(6)).toBe(false);
-      expect(isItPrime(9)).toBe(false);
-      expect(isItPrime(81350)).toBe(false);
-      expect(isItPrime(1000002)).toBe(false);
-    });
+    expect(getComplementaryDNA("AcgT")).toBe("TGCA");
   });
+
+  test("Valid DNA character gives valid complementary character", () => {
+    expect(getComplementaryDNA("A")).toBe("T");
+    expect(getComplementaryDNA("c")).toBe("G");
+    expect(getComplementaryDNA("G")).toBe("C");
+    expect(getComplementaryDNA("t")).toBe("A");
+  });
+});
+
+describe("isItPrime", () => {
+  test("Error is thrown for invalid input", () => {
+    expect(() => {
+      isItPrime();
+    }).toThrow("Number greater than 1 required");
+
+    expect(() => {
+      isItPrime("abc");
+    }).toThrow("Number greater than 1 required");
+
+    expect(() => {
+      isItPrime(-10);
+    }).toThrow("Number greater than 1 required");
+
+    expect(() => {
+      isItPrime(1);
+    }).toThrow("Number greater than 1 required");
+  });
+
+  test("Test fractional number returns false", () => {
+    expect(isItPrime(2.5)).toBe(false);
+    expect(isItPrime(11.01)).toBe(false);
+    expect(isItPrime(7.9)).toBe(false);
+    expect(isItPrime(2.99)).toBe(false);
+  });
+
+  test("Test returns true for valid prime number", () => {
+    expect(isItPrime(2)).toBe(true);
+    expect(isItPrime(3)).toBe(true);
+    expect(isItPrime(5)).toBe(true);
+    expect(isItPrime(7)).toBe(true);
+    expect(isItPrime(13037)).toBe(true);
+    expect(isItPrime(81349)).toBe(true);
+    expect(isItPrime(1000003)).toBe(true);
+  });
+
+  test("Test returns false for invalid prime number", () => {
+    expect(isItPrime(4)).toBe(false);
+    expect(isItPrime(6)).toBe(false);
+    expect(isItPrime(9)).toBe(false);
+    expect(isItPrime(81350)).toBe(false);
+    expect(isItPrime(1000002)).toBe(false);
+  });
+});
+
+describe("createMatrix", () => {
+  test("Error is thrown for invalid input", () => {
+    expect(() => {
+      createMatrix();
+    }).toThrow("Requires number > 0 and fill parameter");
+
+    expect(() => {
+      createMatrix("abc");
+    }).toThrow("Requires number > 0 and fill parameter");
+
+    expect(() => {
+      createMatrix(0, "foof");
+    }).toThrow("Requires number > 0 and fill parameter");
+
+    expect(() => {
+      createMatrix(3);
+    }).toThrow("Requires number > 0 and fill parameter");
+
+    expect(() => {
+      createMatrix("foof", 3);
+    }).toThrow("Requires number > 0 and fill parameter");
+  });
+
+  // test("Test fractional number returns false", () => {
+  //   expect(isItPrime(2.5)).toBe(false);
+  //   expect(isItPrime(11.01)).toBe(false);
+  //   expect(isItPrime(7.9)).toBe(false);
+  //   expect(isItPrime(2.99)).toBe(false);
+  // });
 });

@@ -90,9 +90,11 @@ export const isItPrime = (number) => {
  * @param {Any} fill
  * @returns {Array}
  */
+const MATRIX_ERR_MSG = "Requires number > 0 and fill parameter";
+
 export const createMatrix = (n, fill) => {
-  if (n === undefined) throw new Error("n is required");
-  if (fill === undefined) throw new Error("fill is required");
+  if (n === undefined) throw new Error(MATRIX_ERR_MSG);
+  if (fill === undefined) throw new Error(MATRIX_ERR_MSG);
 };
 
 /**
