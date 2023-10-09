@@ -133,7 +133,7 @@ describe("isValidDNA", () => {
 
       expect(getComplementaryDNA("acgt")).toBe("TGCA");
 
-      expect(getComplementaryDNA("AcTg")).toBe("TGCA");
+      expect(getComplementaryDNA("AcgT")).toBe("TGCA");
     });
   });
 });
