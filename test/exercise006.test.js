@@ -37,33 +37,37 @@ describe("sumMultiples", () => {
     expect(sumMultiples([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).toBe(33);
     expect(sumMultiples([11, 12, 13, 14, 15, 19])).toBe(27);
   });
+});
 
-  /**
-   * Tests:
-   *
-   * 1. undefined str,
-   * 2. empty str,
-   * 3. str contains valid DNA,
-   * 4. string contains no DNA,
-   * 5. string contains mix of valid and invalid DNA chars
-   *
-   * other types passed in: number, boolean, array, obj?
-   *
-   */
+/**
+ * Tests:
+ *
+ * 1. undefined str,
+ * 2. empty str,
+ * 3. str contains valid DNA,
+ * 4. string contains no DNA,
+ * 5. string contains mix of valid and invalid DNA chars
+ *
+ * other types passed in: number, boolean, array, obj?
+ *
+ */
 
-  describe("isValidDNA", () => {
-    test("Error is thrown if nothing is passed in", () => {
-      expect(() => {
-        isValidDNA();
-      }).toThrow("String is required");
+describe("isValidDNA", () => {
+  test("Error is thrown if nothing is passed in", () => {
+    expect(() => {
+      isValidDNA();
+    }).toThrow("String is required");
 
-      expect(() => {
-        isValidDNA(10);
-      }).toThrow("String is required");
+    expect(() => {
+      isValidDNA(10);
+    }).toThrow("String is required");
 
-      expect(() => {
-        isValidDNA(false);
-      }).toThrow("String is required");
-    });
+    expect(() => {
+      isValidDNA(false);
+    }).toThrow("String is required");
+  });
+
+  test("Empty string passed in returns false", () => {
+    expect(isValidDNA("")).toBe(false);
   });
 });
