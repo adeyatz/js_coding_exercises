@@ -4,6 +4,7 @@ import {
   getComplementaryDNA,
   isItPrime,
   createMatrix,
+  areWeCovered,
 } from "../challenges/exercise006";
 
 console.log(sumMultiples);
@@ -284,4 +285,58 @@ describe("createMatrix", () => {
     ];
     expect(createMatrix(3, arr)).toEqual(expectedArr);
   });
+});
+
+/**
+ * tests for areWeCovered:
+ * 1. Staff must be an array, so validate this with false cases or nulls
+ * 2. dayOfWeek must be one of the days of the week, so validate this with negative and positive cases
+ * 3. Both elements must be present, - validate  when staff or dayOfWeek are missing
+ * 4. Use lower case
+ * 5. Build an object with key values for dayOfWeek
+ * 6. Loop through staff array and increment each dayOfWeek found
+ * 7 Test cases: Not enough staff, Enough staff but not enough days, enough staff and enough days
+ *
+ */
+
+describe("areWeCovered", () => {
+  test("Error is thrown for invalid parameter count", () => {
+    expect(() => {
+      areWeCovered();
+    }).toThrow("Requires staff Array and weekday");
+
+    expect(() => {
+      areWeCovered("abc");
+    }).toThrow("Requires staff Array and weekday");
+
+    expect(() => {
+      areWeCovered(3);
+    }).toThrow("Requires staff Array and weekday");
+  });
+
+  test("Error is thrown for invalid staff parameter", () => {
+    expect(() => {
+      areWeCovered();
+    }).toThrow("Requires staff Array and weekday");
+
+    expect(() => {
+      areWeCovered("abc");
+    }).toThrow("Requires staff Array and weekday");
+
+    expect(() => {
+      areWeCovered(3);
+    }).toThrow("Requires staff Array and weekday");
+  });
+
+  // test("Value of 1 creates array of size 1x1", () => {
+  //   const expectedNumber = [[0]];
+  //   expect(createMatrix(1, 0)).toEqual(expectedNumber);
+
+  //   const expectedString = [["foo"]];
+  //   expect(createMatrix(1, "foo")).toEqual(expectedString);
+
+  //   const user = { name: "Test", value: 20.4 };
+  //   const expectedObj = [[user]];
+  //   expect(createMatrix(1, user)).toEqual(expectedObj);
+  // });
 });
