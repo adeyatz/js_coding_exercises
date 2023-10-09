@@ -158,6 +158,10 @@ describe("isValidDNA", () => {
       expect(() => {
         isItPrime(-10);
       }).toThrow("Number greater than 1 required");
+
+      expect(() => {
+        isItPrime(1);
+      }).toThrow("Number greater than 1 required");
     });
 
     test("Test fractional number returns false", () => {
@@ -170,8 +174,19 @@ describe("isValidDNA", () => {
     test("Test returns true for valid prime number", () => {
       expect(isItPrime(2)).toBe(true);
       expect(isItPrime(3)).toBe(true);
+      expect(isItPrime(5)).toBe(true);
       expect(isItPrime(7)).toBe(true);
-      expect(isItPrime(11)).toBe(true);
+      expect(isItPrime(13037)).toBe(true);
+      expect(isItPrime(81349)).toBe(true);
+      expect(isItPrime(1000003)).toBe(true);
+    });
+
+    test("Test returns false for invalid prime number", () => {
+      expect(isItPrime(4)).toBe(false);
+      expect(isItPrime(6)).toBe(false);
+      expect(isItPrime(9)).toBe(false);
+      expect(isItPrime(81350)).toBe(false);
+      expect(isItPrime(1000002)).toBe(false);
     });
   });
 });

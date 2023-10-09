@@ -64,11 +64,19 @@ export const getComplementaryDNA = (str) => {
  */
 const PRIME_ERR_MSG = "Number greater than 1 required";
 
-export const isItPrime = (n) => {
-  if (n === undefined) throw new Error(PRIME_ERR_MSG);
-  if (!(typeof n === "number")) throw new Error(PRIME_ERR_MSG);
-  if (n < 1) throw new Error(PRIME_ERR_MSG);
-  if (Math.floor(n) != n) return false;
+export const isItPrime = (number) => {
+  if (number === undefined) throw new Error(PRIME_ERR_MSG);
+  if (!(typeof number === "number")) throw new Error(PRIME_ERR_MSG);
+  if (number <= 1) throw new Error(PRIME_ERR_MSG);
+  if (Math.floor(number) != number) return false;
+  if (number === 2) return true;
+
+  const numberSquareRoot = Math.sqrt(number);
+
+  for (let i = 2; i <= numberSquareRoot; i++) {
+    if (number % i === 0) return false;
+  }
+  return true;
 };
 
 /**
