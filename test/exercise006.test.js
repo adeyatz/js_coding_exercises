@@ -355,4 +355,24 @@ describe("areWeCovered", () => {
 
     expect(areWeCovered(staff, "Monday")).toBe(false);
   });
+
+  test("returns false if enough staff, but not on the same day", () => {
+    const staff = [
+      { name: "Sally", rota: ["Monday"] },
+      { name: "Pedro", rota: ["sunday"] },
+      { name: "Mario", rota: ["Monday"] },
+    ];
+
+    expect(areWeCovered(staff, "Monday")).toBe(false);
+  });
+
+  test("returns true if enough staff, days are case insensitive", () => {
+    const staff = [
+      { name: "Sally", rota: ["MonDAY"] },
+      { name: "Pedro", rota: ["mONdaY"] },
+      { name: "Mario", rota: ["Monday"] },
+    ];
+
+    expect(areWeCovered(staff, "Monday")).toBe(true);
+  });
 });
