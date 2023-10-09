@@ -71,7 +71,7 @@ describe("isValidDNA", () => {
     expect(isValidDNA("")).toBe(false);
   });
 
-  test("Empty valid DNA letter passed in returns true", () => {
+  test("Valid DNA letter returns true", () => {
     expect(isValidDNA("C")).toBe(true);
 
     expect(isValidDNA("G")).toBe(true);
@@ -79,5 +79,33 @@ describe("isValidDNA", () => {
     expect(isValidDNA("T")).toBe(true);
 
     expect(isValidDNA("A")).toBe(true);
+  });
+
+  test("Valid DNA letter sequence returns true", () => {
+    expect(isValidDNA("Cc")).toBe(true);
+
+    expect(isValidDNA("ACGT")).toBe(true);
+
+    expect(isValidDNA("TTACGCGATTTTTAAAAGGGCCCCacgt")).toBe(true);
+  });
+
+  test("Invalid DNA letter returns false", () => {
+    expect(isValidDNA("B")).toBe(false);
+
+    expect(isValidDNA("Z")).toBe(false);
+
+    expect(isValidDNA("1")).toBe(false);
+
+    expect(isValidDNA("DEFH")).toBe(false);
+  });
+
+  test("Mix of Valid and Invalid DNA letter returns false", () => {
+    expect(isValidDNA("ABCDEFGHIJKLMNOPQRSTUVWXYZ")).toBe(false);
+
+    expect(isValidDNA("ACGTQ")).toBe(false);
+
+    expect(isValidDNA("AB")).toBe(false);
+
+    expect(isValidDNA("T1")).toBe(false);
   });
 });

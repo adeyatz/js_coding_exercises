@@ -34,7 +34,9 @@ export const isValidDNA = (str) => {
 
   if (str.length == 0) return false;
 
-  return str.match(/[acgt]/gi).length === str.length;
+  const dnaMatches = str.match(/[acgt]/gi);
+  if (dnaMatches != null) return dnaMatches.length === str.length;
+  else return false;
 };
 
 /**
