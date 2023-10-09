@@ -68,6 +68,7 @@ export const isItPrime = (n) => {
   if (n === undefined) throw new Error(PRIME_ERR_MSG);
   if (!(typeof n === "number")) throw new Error(PRIME_ERR_MSG);
   if (n < 1) throw new Error(PRIME_ERR_MSG);
+  if (Math.floor(n) != n) return false;
 };
 
 /**

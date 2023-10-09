@@ -159,5 +159,19 @@ describe("isValidDNA", () => {
         isItPrime(-10);
       }).toThrow("Number greater than 1 required");
     });
+
+    test("Test fractional number returns false", () => {
+      expect(isItPrime(2.5)).toBe(false);
+      expect(isItPrime(11.01)).toBe(false);
+      expect(isItPrime(7.9)).toBe(false);
+      expect(isItPrime(2.99)).toBe(false);
+    });
+
+    test("Test returns true for valid prime number", () => {
+      expect(isItPrime(2)).toBe(true);
+      expect(isItPrime(3)).toBe(true);
+      expect(isItPrime(7)).toBe(true);
+      expect(isItPrime(11)).toBe(true);
+    });
   });
 });
