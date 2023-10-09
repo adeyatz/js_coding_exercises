@@ -226,4 +226,62 @@ describe("createMatrix", () => {
     const expectedObj = [[user]];
     expect(createMatrix(1, user)).toEqual(expectedObj);
   });
+
+  test("Value of 2 creates array of size 2x2", () => {
+    const expectedNumber = [
+      [0, 0],
+      [0, 0],
+    ];
+    expect(createMatrix(2, 0)).toEqual(expectedNumber);
+
+    const str = "foo";
+    const expectedString = [
+      [str, str],
+      [str, str],
+    ];
+    expect(createMatrix(2, str)).toEqual(expectedString);
+
+    const user = { name: "2x2", value: "ABC" };
+    const expectedObj = [
+      [user, user],
+      [user, user],
+    ];
+    expect(createMatrix(2, user)).toEqual(expectedObj);
+  });
+
+  test("Value of 3 creates array of size 3x3", () => {
+    const expectedNumber = [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0],
+    ];
+    expect(createMatrix(3, 0)).toEqual(expectedNumber);
+
+    const str = "foo";
+    const expectedString = [
+      [str, str, str],
+      [str, str, str],
+      [str, str, str],
+    ];
+    expect(createMatrix(3, str)).toEqual(expectedString);
+
+    const user = { name: "3x3", value: "ABC" };
+    const expectedObj = [
+      [user, user, user],
+      [user, user, user],
+      [user, user, user],
+    ];
+    expect(createMatrix(3, user)).toEqual(expectedObj);
+  });
+
+  test("Value of 3, fill as array creates 3 x 3 arrays", () => {
+    const arr = ["one", 2, false];
+
+    const expectedArr = [
+      [arr, arr, arr],
+      [arr, arr, arr],
+      [arr, arr, arr],
+    ];
+    expect(createMatrix(3, arr)).toEqual(expectedArr);
+  });
 });

@@ -99,16 +99,24 @@ export const createMatrix = (number, filler) => {
   if (!(typeof number === "number") || number <= 0)
     throw new Error(MATRIX_ERR_MSG);
 
-  let result = [];
-
-  for (let outer = 0; outer < number; outer++) {
-    const innerArr = [];
-    for (let inner = 0; inner < number; inner++) {
-      innerArr.push(filler);
-    }
-    result.push(innerArr);
+  const innerArr = [];
+  for (let inner = 0; inner < number; inner++) {
+    console.log("Inner length: " + innerArr.push(filler));
   }
-  return result;
+  const matrix = [];
+  for (let outer = 0; outer < number; outer++) {
+    console.log("matrix length " + matrix.push(innerArr));
+  }
+  return matrix;
+
+  //   for (let outer = 0; outer < number; outer++) {
+  //     const innerArr = [];
+  //     for (let inner = 0; inner < number; inner++) {
+  //       innerArr.push(filler);
+  //     }
+  //     result.push(innerArr);
+  //   }
+  //   return result;
 };
 
 /**
