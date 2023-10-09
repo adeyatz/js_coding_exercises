@@ -101,11 +101,11 @@ export const createMatrix = (number, filler) => {
 
   const innerArr = [];
   for (let inner = 0; inner < number; inner++) {
-    console.log("Inner length: " + innerArr.push(filler));
+    innerArr.push(filler);
   }
   const matrix = [];
   for (let outer = 0; outer < number; outer++) {
-    console.log("matrix length " + matrix.push(innerArr));
+    matrix.push(innerArr);
   }
   return matrix;
 
@@ -131,7 +131,8 @@ export const createMatrix = (number, filler) => {
  * @param {String} day
  * @returns {Boolean}
  */
+const STAFF_ERR_MSG = "Requires staff Array and weekday";
+
 export const areWeCovered = (staff, day) => {
-  if (staff === undefined) throw new Error("staff is required");
-  if (day === undefined) throw new Error("day is required");
+  if (staff === undefined || day === undefined) throw new Error(STAFF_ERR_MSG);
 };

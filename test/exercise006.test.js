@@ -316,15 +316,15 @@ describe("areWeCovered", () => {
 
   test("Error is thrown for invalid staff parameter", () => {
     expect(() => {
-      areWeCovered();
+      areWeCovered(0, "Monday");
     }).toThrow("Requires staff Array and weekday");
 
     expect(() => {
-      areWeCovered("abc");
+      areWeCovered("abc", "Monday");
     }).toThrow("Requires staff Array and weekday");
 
     expect(() => {
-      areWeCovered(3);
+      areWeCovered(false, "Monday");
     }).toThrow("Requires staff Array and weekday");
   });
 
