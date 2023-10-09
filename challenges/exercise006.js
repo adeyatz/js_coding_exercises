@@ -52,26 +52,9 @@ export const getComplementaryDNA = (str) => {
 
   const dnaChars = str.toUpperCase().split("");
 
-  dnaChars.forEach((ch, index) => {
-    switch (ch) {
-      case "A":
-        dnaChars[index] = "T";
-        break;
+  const dnaSwitcher = { A: "T", T: "A", C: "G", G: "C" };
 
-      case "C":
-        dnaChars[index] = "G";
-        break;
-
-      case "G":
-        dnaChars[index] = "C";
-        break;
-
-      case "T":
-        dnaChars[index] = "A";
-        break;
-    }
-  });
-  return dnaChars.join("");
+  return dnaChars.map((ch) => dnaSwitcher[ch]).join("");
 };
 
 /**

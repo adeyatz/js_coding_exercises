@@ -128,12 +128,19 @@ describe("isValidDNA", () => {
       }).toThrow("Valid DNA string is required");
     });
 
-    test("Expect ACGT to give TGCA, upper and lower case", () => {
+    test("Valid DNA string ACGT to give TGCA, upper and lower case", () => {
       expect(getComplementaryDNA("ACGT")).toBe("TGCA");
 
       expect(getComplementaryDNA("acgt")).toBe("TGCA");
 
       expect(getComplementaryDNA("AcgT")).toBe("TGCA");
+    });
+
+    test("Valid DNA character gives valid complementary character", () => {
+      expect(getComplementaryDNA("A")).toBe("T");
+      expect(getComplementaryDNA("c")).toBe("G");
+      expect(getComplementaryDNA("G")).toBe("C");
+      expect(getComplementaryDNA("t")).toBe("A");
     });
   });
 });
