@@ -93,9 +93,22 @@ export const isItPrime = (number) => {
  */
 const MATRIX_ERR_MSG = "Requires number > 0 and fill parameter";
 
-export const createMatrix = (n, fill) => {
-  if (n === undefined || fill === undefined) throw new Error(MATRIX_ERR_MSG);
-  if (!(typeof n === "number") || n <= 0) throw new Error(MATRIX_ERR_MSG);
+export const createMatrix = (number, filler) => {
+  if (number === undefined || filler === undefined)
+    throw new Error(MATRIX_ERR_MSG);
+  if (!(typeof number === "number") || number <= 0)
+    throw new Error(MATRIX_ERR_MSG);
+
+  let result = [];
+
+  for (let outer = 0; outer < number; outer++) {
+    const innerArr = [];
+    for (let inner = 0; inner < number; inner++) {
+      innerArr.push(filler);
+    }
+    result.push(innerArr);
+  }
+  return result;
 };
 
 /**

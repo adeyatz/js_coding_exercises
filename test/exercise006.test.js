@@ -215,10 +215,15 @@ describe("createMatrix", () => {
     }).toThrow("Requires number > 0 and fill parameter");
   });
 
-  // test("Test fractional number returns false", () => {
-  //   expect(isItPrime(2.5)).toBe(false);
-  //   expect(isItPrime(11.01)).toBe(false);
-  //   expect(isItPrime(7.9)).toBe(false);
-  //   expect(isItPrime(2.99)).toBe(false);
-  // });
+  test("Value of 1 creates array of size 1x1", () => {
+    const expectedNumber = [[0]];
+    expect(createMatrix(1, 0)).toEqual(expectedNumber);
+
+    const expectedString = [["foo"]];
+    expect(createMatrix(1, "foo")).toEqual(expectedString);
+
+    const user = { name: "Test", value: 20.4 };
+    const expectedObj = [[user]];
+    expect(createMatrix(1, user)).toEqual(expectedObj);
+  });
 });
