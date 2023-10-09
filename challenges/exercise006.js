@@ -69,6 +69,7 @@ export const isItPrime = (number) => {
   if (!(typeof number === "number")) throw new Error(PRIME_ERR_MSG);
   if (number <= 1) throw new Error(PRIME_ERR_MSG);
   if (Math.floor(number) != number) return false;
+
   if (number === 2) return true;
 
   const numberSquareRoot = Math.sqrt(number);
@@ -93,8 +94,8 @@ export const isItPrime = (number) => {
 const MATRIX_ERR_MSG = "Requires number > 0 and fill parameter";
 
 export const createMatrix = (n, fill) => {
-  if (n === undefined) throw new Error(MATRIX_ERR_MSG);
-  if (fill === undefined) throw new Error(MATRIX_ERR_MSG);
+  if (n === undefined || fill === undefined) throw new Error(MATRIX_ERR_MSG);
+  if (!(typeof n === "number") || n <= 0) throw new Error(MATRIX_ERR_MSG);
 };
 
 /**
