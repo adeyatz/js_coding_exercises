@@ -1,4 +1,8 @@
-import { isValidDNA, sumMultiples } from "../challenges/exercise006";
+import {
+  isValidDNA,
+  sumMultiples,
+  getComplementaryDNA,
+} from "../challenges/exercise006";
 
 console.log(sumMultiples);
 
@@ -40,7 +44,7 @@ describe("sumMultiples", () => {
 });
 
 /**
- * Tests:
+ * Tests for isValidDNA:
  *
  * 1. undefined str,
  * 2. empty str,
@@ -107,5 +111,15 @@ describe("isValidDNA", () => {
     expect(isValidDNA("AB")).toBe(false);
 
     expect(isValidDNA("T1")).toBe(false);
+  });
+
+  describe("getComplementaryDNA", () => {
+    test("Expect ACGT to give TGCA, upper and lower case", () => {
+      expect(getComplementaryDNA("ACGT")).toBe("TGCA");
+
+      expect(getComplementaryDNA("acgt")).toBe("TGCA");
+
+      expect(getComplementaryDNA("AcTg")).toBe("TGCA");
+    });
   });
 });
