@@ -62,8 +62,11 @@ export const getComplementaryDNA = (str) => {
  * @param {Number} n
  * @returns {Boolean}
  */
+const PRIME_ERR_MSG = "Number greater than 1 required";
+
 export const isItPrime = (n) => {
-  if (n === undefined) throw new Error("n is required");
+  if (n === undefined) throw new Error(PRIME_ERR_MSG);
+  if (!(typeof n === "number")) throw new Error(PRIME_ERR_MSG);
 };
 
 /**

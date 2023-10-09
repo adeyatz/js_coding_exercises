@@ -2,6 +2,7 @@ import {
   isValidDNA,
   sumMultiples,
   getComplementaryDNA,
+  isItPrime,
 } from "../challenges/exercise006";
 
 console.log(sumMultiples);
@@ -141,6 +142,22 @@ describe("isValidDNA", () => {
       expect(getComplementaryDNA("c")).toBe("G");
       expect(getComplementaryDNA("G")).toBe("C");
       expect(getComplementaryDNA("t")).toBe("A");
+    });
+  });
+
+  describe("isItPrime", () => {
+    test("Error is thrown for invalid input", () => {
+      expect(() => {
+        isItPrime();
+      }).toThrow("Number greater than 1 required");
+
+      expect(() => {
+        isItPrime("abc");
+      }).toThrow("Number greater than 1 required");
+
+      expect(() => {
+        isItPrime(-10);
+      }).toThrow("Number greater than 1 required");
     });
   });
 });
