@@ -366,13 +366,40 @@ describe("areWeCovered", () => {
     expect(areWeCovered(staff, "Monday")).toBe(false);
   });
 
-  test("returns true if enough staff, days are case insensitive", () => {
+  test("returns true if enough staff & days case insensitive", () => {
     const staff = [
       { name: "Sally", rota: ["MonDAY"] },
       { name: "Pedro", rota: ["mONdaY"] },
       { name: "Mario", rota: ["Monday"] },
     ];
-
     expect(areWeCovered(staff, "Monday")).toBe(true);
+  });
+
+  test("returns false if enough staff & days but one day is misspelt", () => {
+    const staff = [
+      { name: "Sally", rota: ["NonDAY"] },
+      { name: "Pedro", rota: ["mONdaY"] },
+      { name: "Mario", rota: ["Monday"] },
+    ];
+    expect(areWeCovered(staff, "Monday")).toBe(false);
+  });
+
+  test(" valid test cases, verify correct return value", () => {
+    const staff = [
+      {
+        name: "Sally",
+        rota: ["MonDAY", "Wednesday", "thursday", "friday", "saturday"],
+      },
+      { name: "Pedro", rota: ["mONdaY", "tuesday", "thursday", "saturday"] },
+      {
+        name: "Mario",
+        rota: ["Sunday", "Monday", "Tuesday", "Thursday", "Friday"],
+      },
+    ];
+    expect(areWeCovered(staff, "Monday")).toBe(true);
+    expect(areWeCovered(staff, "thursday")).toBe(true);
+
+    expect(areWeCovered(staff, "Sunday")).toBe(false);
+    expect(areWeCovered(staff, "saturday")).toBe(false);
   });
 });

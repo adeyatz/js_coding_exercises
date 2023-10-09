@@ -140,7 +140,7 @@ export const areWeCovered = (staff, dayOfWeek) => {
   if (!Array.isArray(staff) || !(typeof dayOfWeek == "string"))
     throw new Error(STAFF_ERR_MSG);
 
-  const daysOfTheWeek = {
+  const weeklyRota = {
     sunday: 0,
     monday: 0,
     tuesday: 0,
@@ -150,8 +150,15 @@ export const areWeCovered = (staff, dayOfWeek) => {
     saturday: 0,
   };
 
-  if (daysOfTheWeek[dayOfWeek.toLowerCase()] == null)
+  const updateRota = (days) =>
+    days.forEach((day) => (weeklyRota[day.toLowerCase()] += 1));
+
+  if (weeklyRota[dayOfWeek.toLowerCase()] == null)
     throw new Error(STAFF_ERR_MSG);
 
   if (staff.length < MIN_STAFF_REQUIRED) return false;
+
+  staff.forEach((staffMember) => updateRota(staffMember.rota));
+
+  return weeklyRota[dayOfWeek.toLowerCase()] >= MIN_STAFF_REQUIRED;
 };
