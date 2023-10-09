@@ -60,15 +60,15 @@ describe("isValidDNA", () => {
   test("Error is thrown if nothing is passed in", () => {
     expect(() => {
       isValidDNA();
-    }).toThrow("String is required");
+    }).toThrow("Valid DNA string is required");
 
     expect(() => {
       isValidDNA(10);
-    }).toThrow("String is required");
+    }).toThrow("Valid DNA string is required");
 
     expect(() => {
       isValidDNA(false);
-    }).toThrow("String is required");
+    }).toThrow("Valid DNA string is required");
   });
 
   test("Empty string passed in returns false", () => {
@@ -114,6 +114,20 @@ describe("isValidDNA", () => {
   });
 
   describe("getComplementaryDNA", () => {
+    test("Error is thrown for invalid input", () => {
+      expect(() => {
+        getComplementaryDNA();
+      }).toThrow("Valid DNA string is required");
+
+      expect(() => {
+        getComplementaryDNA("abc");
+      }).toThrow("Valid DNA string is required");
+
+      expect(() => {
+        getComplementaryDNA(10);
+      }).toThrow("Valid DNA string is required");
+    });
+
     test("Expect ACGT to give TGCA, upper and lower case", () => {
       expect(getComplementaryDNA("ACGT")).toBe("TGCA");
 

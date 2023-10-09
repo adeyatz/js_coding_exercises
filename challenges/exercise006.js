@@ -30,7 +30,7 @@ export const sumMultiples = (arr) => {
  */
 export const isValidDNA = (str) => {
   if (str === undefined || !(typeof str === "string"))
-    throw new Error("String is required");
+    throw new Error("Valid DNA string is required");
 
   if (str.length == 0) return false;
 
@@ -45,7 +45,8 @@ export const isValidDNA = (str) => {
  * @returns {String}
  */
 export const getComplementaryDNA = (str) => {
-  if (str === undefined) throw new Error("str is required");
+  if (str === undefined) throw new Error("Valid DNA string is required");
+  if (!isValidDNA(str)) throw new Error("Valid DNA string is required");
 };
 
 /**
