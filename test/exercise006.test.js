@@ -347,15 +347,12 @@ describe("areWeCovered", () => {
     }).toThrow("Requires staff Array and weekday");
   });
 
-  // test("Value of 1 creates array of size 1x1", () => {
-  //   const expectedNumber = [[0]];
-  //   expect(createMatrix(1, 0)).toEqual(expectedNumber);
+  test("returns false if not enough staff", () => {
+    const staff = [
+      { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+      { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+    ];
 
-  //   const expectedString = [["foo"]];
-  //   expect(createMatrix(1, "foo")).toEqual(expectedString);
-
-  //   const user = { name: "Test", value: 20.4 };
-  //   const expectedObj = [[user]];
-  //   expect(createMatrix(1, user)).toEqual(expectedObj);
-  // });
+    expect(areWeCovered(staff, "Monday")).toBe(false);
+  });
 });

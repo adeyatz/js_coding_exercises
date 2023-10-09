@@ -132,11 +132,13 @@ export const createMatrix = (number, filler) => {
  * @returns {Boolean}
  */
 const STAFF_ERR_MSG = "Requires staff Array and weekday";
+const MIN_STAFF_REQUIRED = 3;
 
 export const areWeCovered = (staff, dayOfWeek) => {
   if (staff === undefined || dayOfWeek === undefined)
     throw new Error(STAFF_ERR_MSG);
-  if (!Array.isArray(staff)) throw new Error(STAFF_ERR_MSG);
+  if (!Array.isArray(staff) || !(typeof dayOfWeek == "string"))
+    throw new Error(STAFF_ERR_MSG);
 
   const daysOfTheWeek = {
     sunday: 0,
@@ -148,5 +150,8 @@ export const areWeCovered = (staff, dayOfWeek) => {
     saturday: 0,
   };
 
-  if (daysOfTheWeek[dayOfWeek] == null) throw new Error(STAFF_ERR_MSG);
+  if (daysOfTheWeek[dayOfWeek.toLowerCase()] == null)
+    throw new Error(STAFF_ERR_MSG);
+
+  if (staff.length < MIN_STAFF_REQUIRED) return false;
 };
