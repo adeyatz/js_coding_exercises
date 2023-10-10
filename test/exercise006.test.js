@@ -402,4 +402,19 @@ describe("areWeCovered", () => {
     expect(areWeCovered(staff, "Sunday")).toBe(false);
     expect(areWeCovered(staff, "saturday")).toBe(false);
   });
+
+  test(" duplicate days only count as one", () => {
+    const staff = [
+      {
+        name: "Sally",
+        rota: ["MonDAY", "Monday", "Monday"],
+      },
+      { name: "Pedro", rota: [] },
+      {
+        name: "Mario",
+        rota: [],
+      },
+    ];
+    expect(areWeCovered(staff, "Monday")).toBe(false);
+  });
 });
