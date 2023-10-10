@@ -7,7 +7,7 @@ import {
   areWeCovered,
 } from "../challenges/exercise006";
 
-console.log(sumMultiples);
+//console.log(sumMultiples);
 
 describe("sumMultiples", () => {
   test("Error is thrown if nothing is passed in", () => {

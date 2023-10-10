@@ -152,18 +152,18 @@ export const areWeCovered = (staff, dayOfWeek) => {
     saturday: 0,
   };
 
-  const updateRota = (days) =>
-    days.forEach((day) =>
-      weeklyRota[day.toLowerCase()] != null
-        ? (weeklyRota[day.toLowerCase()] += 1)
-        : null
+  const updateRota = (staffRotaDays) =>
+    Object.keys(weeklyRota).forEach(
+      (day) => (weeklyRota[day] += staffRotaDays.indexOf(day) != -1 ? 1 : 0)
     );
+
+  const daysToLowerCase = (days) => days.map((day) => day.toLowerCase());
 
   if (weeklyRota[dayToCheck] == null) throw new Error(STAFF_ERR_MSG);
 
   if (staff.length < MIN_STAFF_REQUIRED) return false;
 
-  staff.forEach((staffMember) => updateRota(staffMember.rota));
+  staff.forEach((staffMember) => updateRota(daysToLowerCase(staffMember.rota)));
 
   return weeklyRota[dayToCheck] >= MIN_STAFF_REQUIRED;
 };
